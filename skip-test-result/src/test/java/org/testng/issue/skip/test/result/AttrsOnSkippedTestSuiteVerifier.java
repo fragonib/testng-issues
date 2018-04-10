@@ -40,7 +40,7 @@ public class AttrsOnSkippedTestSuiteVerifier implements ISuiteListener {
         assertThat(skippedTests.size()).as("Skipped tests").isEqualTo(1);
         ITestResult testResult = skippedTests.getAllResults().stream().findFirst().get();
         Set<String> attributeNames = testResult.getAttributeNames();
-        assertThat(attributeNames).as("Atr")
+        assertThat(attributeNames).as("Attributes when SKIP on BEFORE")
                 .contains(AttrsOnSkippedTestLabels.PARENT_BEFORE, AttrsOnSkippedTestLabels.LOCAL_AFTER, AttrsOnSkippedTestLabels.PARENT_AFTER);
     }
 
@@ -48,7 +48,7 @@ public class AttrsOnSkippedTestSuiteVerifier implements ISuiteListener {
         IResultMap skippedTests = testContext.getSkippedTests();
         assertThat(skippedTests.size()).as("Skipped tests").isEqualTo(1);
         ITestResult testResult = skippedTests.getAllResults().stream().findFirst().get();
-        assertThat(testResult.getAttributeNames())
+        assertThat(testResult.getAttributeNames()).as("Attributes when SKIP on TEST")
                 .contains(AttrsOnSkippedTestLabels.PARENT_BEFORE, AttrsOnSkippedTestLabels.TEST, AttrsOnSkippedTestLabels.LOCAL_AFTER, AttrsOnSkippedTestLabels.PARENT_AFTER);
     }
 
@@ -56,7 +56,7 @@ public class AttrsOnSkippedTestSuiteVerifier implements ISuiteListener {
         IResultMap passedTests = testContext.getPassedTests();
         assertThat(passedTests.size()).as("Passed tests").isEqualTo(1);
         ITestResult testResult = passedTests.getAllResults().stream().findFirst().get();
-        assertThat(testResult.getAttributeNames())
+        assertThat(testResult.getAttributeNames()).as("Attributes when SKIP on AFTER")
                 .contains(AttrsOnSkippedTestLabels.PARENT_BEFORE, AttrsOnSkippedTestLabels.LOCAL_BEFORE, AttrsOnSkippedTestLabels.TEST, AttrsOnSkippedTestLabels.PARENT_AFTER);
     }
 
