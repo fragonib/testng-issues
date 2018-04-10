@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="AttrsSuite">
+
+	<test name="AttrsOnSkippedOnBeforeGroup">
+		<parameter name="failMode" value="BEFORE" />
+		<classes>
+			<class name="org.testng.issue.skip.test.result.AttrsOnSkippedTest" />
+		</classes>
+	</test>
+
+	<test name="AttrsOnSkippedOnTestGroup">
+		<parameter name="failMode" value="TEST" />
+		<classes>
+			<class name="org.testng.issue.skip.test.result.AttrsOnSkippedTest" />
+		</classes>
+	</test>
+
+	<test name="AttrsOnSkippedOnAfterGroup">
+		<parameter name="failMode" value="AFTER" />
+		<classes>
+			<class name="org.testng.issue.skip.test.result.AttrsOnSkippedTest" />
+		</classes>
+	</test>
+	
+</suite>
