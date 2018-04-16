@@ -16,7 +16,7 @@ public class AttrsOnSkippedTest extends AttrsOnSkippedTestParent {
     @BeforeMethod(alwaysRun = true)
     protected void localBeforeMethod(XmlTest context, ITestResult result) {
         if (context.getParameter(AttrsOnSkippedTestLabels.FAIL_MODE).equals(AttrsOnSkippedTestLabels.BEFORE))
-            skipIntentionally(AttrsOnSkippedTestLabels.LOCAL_BEFORE);
+            failIntentionally(AttrsOnSkippedTestLabels.LOCAL_BEFORE);
         log(AttrsOnSkippedTestLabels.LOCAL, AttrsOnSkippedTestLabels.BEFORE);
         reportTestData(result, AttrsOnSkippedTestLabels.LOCAL_BEFORE, AttrsOnSkippedTestLabels.DUMMY_ATTR_VALUE);
     }
@@ -24,7 +24,7 @@ public class AttrsOnSkippedTest extends AttrsOnSkippedTestParent {
     @AfterMethod(alwaysRun = true)
     protected void localAfterMethod(XmlTest context, ITestResult result) {
         if (context.getParameter(AttrsOnSkippedTestLabels.FAIL_MODE).equals(AttrsOnSkippedTestLabels.AFTER))
-            skipIntentionally(AttrsOnSkippedTestLabels.LOCAL_AFTER);
+            failIntentionally(AttrsOnSkippedTestLabels.LOCAL_AFTER);
         log(AttrsOnSkippedTestLabels.LOCAL, AttrsOnSkippedTestLabels.AFTER);
         reportTestData(result, AttrsOnSkippedTestLabels.LOCAL_AFTER, AttrsOnSkippedTestLabels.DUMMY_ATTR_VALUE);
     }

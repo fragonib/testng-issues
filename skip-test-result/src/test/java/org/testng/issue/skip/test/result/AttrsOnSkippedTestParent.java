@@ -15,7 +15,7 @@ public abstract class AttrsOnSkippedTestParent {
     @BeforeMethod(alwaysRun = true)
     protected void parentBeforeMethod(XmlTest context, ITestResult result) {
         if (context.getParameter(AttrsOnSkippedTestLabels.FAIL_MODE).equals(AttrsOnSkippedTestLabels.BEFORE))
-            skipIntentionally(AttrsOnSkippedTestLabels.PARENT_BEFORE);
+            failIntentionally(AttrsOnSkippedTestLabels.PARENT_BEFORE);
         log(AttrsOnSkippedTestLabels.PARENT, AttrsOnSkippedTestLabels.BEFORE);
         reportTestData(result, AttrsOnSkippedTestLabels.PARENT_BEFORE, AttrsOnSkippedTestLabels.DUMMY_ATTR_VALUE);
     }
@@ -23,7 +23,7 @@ public abstract class AttrsOnSkippedTestParent {
     @AfterMethod(alwaysRun = true)
     protected void parentAfterMethod(XmlTest context, ITestResult result) {
         if (context.getParameter(AttrsOnSkippedTestLabels.FAIL_MODE).equals(AttrsOnSkippedTestLabels.AFTER))
-            skipIntentionally(AttrsOnSkippedTestLabels.PARENT_AFTER);
+            failIntentionally(AttrsOnSkippedTestLabels.PARENT_AFTER);
         log(AttrsOnSkippedTestLabels.PARENT, AttrsOnSkippedTestLabels.AFTER);
         reportTestData(result, AttrsOnSkippedTestLabels.PARENT_AFTER, AttrsOnSkippedTestLabels.DUMMY_ATTR_VALUE);
     }
@@ -46,6 +46,10 @@ public abstract class AttrsOnSkippedTestParent {
 
     protected void skipIntentionally(String msg) {
         throw new SkipException(msg);
+    }
+
+    protected void failIntentionally(String msg) {
+        throw new RuntimeException(msg);
     }
 
 }
